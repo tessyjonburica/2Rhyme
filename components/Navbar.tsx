@@ -20,7 +20,7 @@ export function Navbar() {
   const navItems = [
     { name: "Home", href: "#home" },
     { name: "Services", href: "#services" },
-    { name: "Projects", href: "#projects", hasDropdown: true },
+    { name: "Projects", href: "#projects", hasDropdown: false },
     { name: "Contact Us", href: "#contact" },
   ]
 

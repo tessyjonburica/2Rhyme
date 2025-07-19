@@ -1,40 +1,111 @@
-"use client"
+"use client";
 
-import { motion } from "framer-motion"
-import { reasons } from "@/data/reasons"
+import { motion } from "framer-motion";
+import {
+  BadgeCheck,
+  UserRoundCheck,
+  TrendingUp,
+  Lightbulb,
+  Clock
+} from "lucide-react";
+
+/**
+ * Centralised data to keep the JSX tidy.
+ */
+const reasons = [
+  {
+    icon: <BadgeCheck className="w-6 h-6" />,
+    title: "Expertise & Experience",
+    description:
+      "Our team brings years of experience across diverse industries, ensuring top‑notch design solutions."
+  },
+  {
+    icon: <UserRoundCheck className="w-6 h-6" />,
+    title: "Client‑Centric Approach",
+    description:
+      "We prioritise understanding your vision, working together to create exceptional results."
+  },
+  {
+    icon: <TrendingUp className="w-6 h-6" />,
+    title: "Proven Results",
+    description:
+      "Our designs are crafted to boost engagement and drive results, backed by measurable success."
+  },
+  {
+    icon: <Lightbulb className="w-6 h-6" />,
+    title: "Innovative Solutions",
+    description:
+      "We think outside the box to deliver unique design solutions tailored to your needs."
+  },
+  {
+    icon: <Clock className="w-6 h-6" />,
+    title: "On‑Time Delivery",
+    description:
+      "We value your time and consistently meet project deadlines without compromising quality."
+  }
+];
+
+/**
+ * Helpful Framer variants so every card can share animation props.
+ */
+const cardVariants = {
+  hidden: { opacity: 0, y: 24 },
+  visible: (i: number) => ({
+    opacity: 1,
+    y: 0,
+    transition: { duration: 0.6, delay: i * 0.1 }
+  })
+};
 
 export function WhyChooseUs() {
   return (
-    <section id="why-choose-us" className="py-20 bg-[#111113] px-4">
-      <div className="max-w-7xl mx-auto">
+    <section id="why-choose-us" className="py-20 px-4 bg-[#0E0E11]">
+      <div className="mx-auto max-w-7xl">
+        {/* Top copy */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8 }}
+          viewport={{ once: true, amount: 0.4 }}
+          transition={{ duration: 0.7 }}
           className="text-center mb-16"
         >
-          <h2 className="text-3xl md:text-5xl font-bold text-white mb-6">Why Clients Choose Us</h2>
-          <p className="text-xl text-gray-300 max-w-3xl mx-auto">
-            We deliver exceptional results through our proven approach and dedication to excellence.
-          </p>
+          <span className="inline-block rounded-full border border-white/10 bg-white/5 px-4 py-1 text-sm font-medium tracking-widest text-white">
+            Why Clients Choose Us
+          </span>
+
+          <h2 className="mx-auto mt-8 max-w-4xl text-3xl font-bold leading-tight text-white md:text-5xl">
+            Explore our latest projects and the stories
+            <br className="hidden lg:block" />
+            behind each design.
+          </h2>
         </motion.div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {reasons.map((reason, index) => (
-            <motion.div
-              key={index}
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, delay: index * 0.1 }}
-              className="bg-[#1f1f23] p-8 rounded-lg hover:bg-[#27272a] transition-colors"
+        {/* Card grid */}
+        <div className="grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
+          {reasons.map((item, i) => (
+            <motion.article
+              key={item.title}
+              custom={i}
+              variants={cardVariants}
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: true, amount: 0.3 }}
+              className="group relative overflow-hidden rounded-xl border border-white/5 bg-[#1B1B1E] p-8 transition hover:bg-[#27272A]/80"
             >
-              <div className="text-4xl mb-4">{reason.icon}</div>
-              <h3 className="text-xl font-bold text-white mb-4">{reason.title}</h3>
-              <p className="text-gray-300">{reason.description}</p>
-            </motion.div>
+              <div className="mb-6 flex h-10 w-10 items-center justify-center rounded-full border border-dashed border-white/20 bg-white/5 backdrop-blur-sm transition-all group-hover:scale-105">
+                {item.icon}
+              </div>
+
+              <h3 className="mb-3 text-lg font-semibold text-white">
+                {item.title}
+              </h3>
+              <p className="text-sm leading-relaxed text-gray-300">
+                {item.description}
+              </p>
+            </motion.article>
           ))}
         </div>
       </div>
     </section>
-  )
+  );
 }
