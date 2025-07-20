@@ -2,14 +2,46 @@
 
 import { useState } from "react"
 import { motion, AnimatePresence } from "framer-motion"
-import { ChevronDown } from "lucide-react"
-import { faq } from "@/data/faq"
+import { Plus, Minus } from "lucide-react" // Changed from ChevronDown to Plus/Minus
 
 export function FAQ() {
-  const [openIndex, setOpenIndex] = useState<number | null>(null)
+  const [openIndex, setOpenIndex] = useState<number | null>(5) // Set initial open index to 5 to match screenshot
+
+  const faqData = [
+    {
+      question: "What industries do you specialize in?",
+      answer:
+        "We specialize in a wide range of industries including tech startups, e-commerce, healthcare, finance, and creative agencies. Our diverse experience allows us to adapt our design strategies to meet unique industry demands.",
+    },
+    {
+      question: "How long does a typical project take?",
+      answer:
+        "Project timelines vary depending on complexity and scope. A typical website design project might take 4-8 weeks, while a full branding and web development package could extend to 10-16 weeks. We provide a detailed timeline after our initial consultation.",
+    },
+    {
+      question: "What is your design process?",
+      answer:
+        "Our design process typically involves discovery, strategy, design, development, and launch. We emphasize collaboration and feedback at each stage to ensure the final product aligns perfectly with your vision and goals.",
+    },
+    {
+      question: "How much does a project cost?",
+      answer:
+        "Project costs are determined by the scope of work, complexity, and required features. We offer custom quotes tailored to each client's specific needs. Please contact us for a personalized estimate.",
+    },
+    {
+      question: "How much does a project cost?", // Duplicate question as per screenshot
+      answer:
+        "Project costs are determined by the scope of work, complexity, and required features. We offer custom quotes tailored to each client's specific needs. Please contact us for a personalized estimate.",
+    },
+    {
+      question: "How do you communicate with clients?",
+      answer:
+        "We believe in clear, regular communication. We'll set up a primary contact method, whether email, Slack, or scheduled video calls, to keep you updated on progress and gather feedback throughout the project.",
+    },
+  ]
 
   return (
-    <section className="py-20 bg-[#111113] px-4">
+    <section className="py-20 bg-[#111113] px-4" id="faq">
       <div className="max-w-4xl mx-auto">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -17,38 +49,48 @@ export function FAQ() {
           transition={{ duration: 0.8 }}
           className="text-center mb-16"
         >
-          <h2 className="text-3xl md:text-5xl font-bold text-white mb-6">Frequently Asked Questions</h2>
-          <p className="text-xl text-gray-300">Find answers to common questions about our services and process.</p>
+          <span className="inline-block px-4 py-2 rounded-full bg-[#1f1f23] text-gray-300 text-sm font-medium mb-4">
+            FAQ
+          </span>
+          <h2 className="text-3xl md:text-5xl font-bold text-white mb-6">
+            Here are answers to some of the questions
+            <br />
+            we get asked the most.
+          </h2>
         </motion.div>
 
-        <div className="space-y-4">
-          {faq.map((item, index) => (
+        <div className="space-y-4 bg-[#1f1f23] rounded-lg p-4 md:p-8">
+          {faqData.map((item, index) => (
             <motion.div
               key={index}
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, delay: index * 0.1 }}
-              className="bg-[#1f1f23] rounded-lg overflow-hidden"
+              transition={{ duration: 0.8, delay: index * 0.05 }}
+              className="border-b border-gray-700 last:border-b-0"
             >
               <button
                 onClick={() => setOpenIndex(openIndex === index ? null : index)}
-                className="w-full px-6 py-4 text-left flex items-center justify-between hover:bg-[#27272a] transition-colors"
+                className="w-full px-2 py-4 text-left flex items-center justify-between hover:bg-[#27272a] transition-colors rounded-md"
               >
-                <span className="text-white font-medium">{item.question}</span>
-                <ChevronDown
-                  className={`h-5 w-5 text-gray-400 transition-transform ${openIndex === index ? "rotate-180" : ""}`}
-                />
+                <span className={`text-white font-medium ${openIndex === index ? "font-bold" : ""}`}>
+                  {item.question}
+                </span>
+                {openIndex === index ? (
+                  <Minus className="h-5 w-5 text-gray-400" />
+                ) : (
+                  <Plus className="h-5 w-5 text-gray-400" />
+                )}
               </button>
               <AnimatePresence>
                 {openIndex === index && (
                   <motion.div
-                    initial={{ height: 0 }}
-                    animate={{ height: "auto" }}
-                    exit={{ height: 0 }}
+                    initial={{ height: 0, opacity: 0 }}
+                    animate={{ height: "auto", opacity: 1 }}
+                    exit={{ height: 0, opacity: 0 }}
                     transition={{ duration: 0.3 }}
                     className="overflow-hidden"
                   >
-                    <div className="px-6 pb-4">
+                    <div className="px-2 pb-4">
                       <p className="text-gray-300">{item.answer}</p>
                     </div>
                   </motion.div>
