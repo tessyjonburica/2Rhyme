@@ -4,7 +4,7 @@ import type React from "react"
 import { useState } from "react"
 import { motion } from "framer-motion"
 import { Send } from "lucide-react"
-// import emailjs from '@emailjs/browser'; // Uncomment this line if you integrate EmailJS
+
 
 export function ContactForm() {
   const [formData, setFormData] = useState({
@@ -22,18 +22,6 @@ export function ContactForm() {
     setSubmissionStatus(null)
 
     try {
-      // --- EmailJS Integration (Uncomment and configure if using) ---
-      // Replace 'YOUR_SERVICE_ID', 'YOUR_TEMPLATE_ID', and 'YOUR_PUBLIC_KEY' with your actual EmailJS credentials
-      // await emailjs.send(
-      //   'YOUR_SERVICE_ID',
-      //   'YOUR_TEMPLATE_ID',
-      //   formData,
-      //   'YOUR_PUBLIC_KEY'
-      // );
-      // setSubmissionStatus('success');
-      // alert("Message sent successfully!");
-      // -------------------------------------------------------------
-
       // Simulate form submission for demonstration
       await new Promise((resolve) => setTimeout(resolve, 2000))
       setSubmissionStatus("success")

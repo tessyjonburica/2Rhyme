@@ -9,7 +9,7 @@ import { Footer } from "@/components/Footer"
 const inter = Inter({ subsets: ["latin"] })
 
 export const metadata: Metadata = {
-  title: "2Rhyme - Emmy Designs | Creative Design Solutions",
+  title: "Emmy Designs | Creative Design Solutions",
   description:
     "We create stunning digital experiences that captivate your audience and drive results. Specializing in UI/UX design, web development, and brand identity.",
   keywords: "design, web development, UI/UX, branding, digital marketing, creative agency",
@@ -18,14 +18,14 @@ export const metadata: Metadata = {
   openGraph: {
     type: "website",
     locale: "en_US",
-    url: "https://2rhyme.com",
-    title: "2Rhyme - Emmy Designs | Creative Design Solutions",
+    url: "https://emmydesigns.vercel.app",
+    title: "Emmy Designs | Creative Design Solutions",
     description: "We create stunning digital experiences that captivate your audience and drive results.",
-    siteName: "2Rhyme - Emmy Designs",
+    siteName: "Emmy Designs",
   },
   twitter: {
     card: "summary_large_image",
-    title: "2Rhyme - Emmy Designs | Creative Design Solutions",
+    title: "Emmy Designs | Creative Design Solutions",
     description: "We create stunning digital experiences that captivate your audience and drive results.",
     creator: "@emmydesigns",
   },
@@ -40,7 +40,6 @@ export const metadata: Metadata = {
       "max-snippet": -1,
     },
   },
-    generator: 'v0.dev'
 }
 
 export default function RootLayout({
