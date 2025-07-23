@@ -64,7 +64,7 @@ export function Expertise() {
           <span className="inline-block rounded-full border border-white/10 bg-white/5 px-4 py-1 text-sm font-medium tracking-widest text-white">
             Expertise
           </span>
-          <h2 className="mt-6 text-3xl font-bold text-white md:text-5xl">
+          <h2 className="mt-6 text-2xl font-bold text-white md:text-4xl">
             Services Tailored for You.
           </h2>
         </motion.div>

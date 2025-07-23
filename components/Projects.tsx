@@ -53,7 +53,7 @@ export function Projects() {
           <span className="inline-block px-4 py-1 rounded-full bg-muted text-muted-foreground text-sm font-medium mb-4">
             Projects
           </span>
-          <h2 className="text-3xl md:text-5xl font-bold text-white mb-6">
+          <h2 className="text-2xl md:text-4xl font-bold text-white mb-6">
             We turn bold ideas into engaging, inspiring designs.
           </h2>
         </motion.div>
@@ -82,7 +82,7 @@ export function Projects() {
                   <p className="text-gray-300 text-base">{project.description}</p>
                 </CardContent>
                 <CardFooter className="p-6 pt-0 flex justify-end">
-                  <Link href={project.link} className="text-white hover:underline text-sm font-medium">
+                  <Link href={project.link !== "#" ? project.link : "/projects"} className="text-white hover:underline text-sm font-medium">
                     View More
                   </Link>
                 </CardFooter>

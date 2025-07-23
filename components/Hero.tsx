@@ -1,8 +1,8 @@
 "use client"
-
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import Image from "next/image";
+import Link from "next/link";
 
 const slides = [
   "/slide 1.png",
@@ -22,27 +22,8 @@ export function Hero() {
 
   return (
     <section className="relative flex flex-col items-center justify-center min-h-[80vh] bg-[#111113] overflow-hidden px-4">
-      {/* Upper right sparkle */}
-      <motion.img
-        src="/Sparkle Right.png"
-        alt="Sparkle"
-        className="absolute top-8 right-8 w-12 h-12 md:w-16 md:h-16 lg:w-20 lg:h-20 z-10 pointer-events-none"
-        initial={{ opacity: 0, scale: 0 }}
-        animate={{ opacity: 1, scale: 1 }}
-        transition={{ delay: 0.5, duration: 0.8 }}
-      />
-      
-      {/* Lower left sparkle */}
-      <motion.img
-        src="/Sparkle Left.png"
-        alt="Sparkle"
-        className="absolute bottom-8 left-8 w-12 h-12 md:w-16 md:h-16 lg:w-20 lg:h-20 z-10 pointer-events-none"
-        initial={{ opacity: 0, scale: 0 }}
-        animate={{ opacity: 1, scale: 1 }}
-        transition={{ delay: 0.7, duration: 0.8 }}
-      />
-
-      <div className="text-center mt-16 md:mt-24 z-20">
+      {/* Removed sparkles */}
+      <div className="text-center mt-20 md:mt-36 z-20">
         <motion.h1 
           className="text-4xl md:text-6xl lg:text-7xl font-bold text-white mb-4 leading-tight"
           initial={{ opacity: 0, y: 30 }}
@@ -52,13 +33,6 @@ export function Hero() {
           Crafting Interfaces <br />
           <span className="inline-flex items-center">
             That Inspires...
-            <motion.img 
-              src="/Sparkle Right.png" 
-              alt="" 
-              className="w-6 h-6 ml-2 hidden md:inline" 
-              animate={{ rotate: 360 }}
-              transition={{ duration: 3, repeat: Infinity, ease: "linear" }}
-            />
           </span>
         </motion.h1>
         
@@ -71,16 +45,21 @@ export function Hero() {
           Innovative, user-centered design for modern brands
         </motion.p>
         
-        <motion.button 
-          className="bg-white text-black px-8 py-4 rounded-full font-semibold shadow-lg hover:scale-105 transition-all duration-300 hover:shadow-xl"
+        <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.5, duration: 0.8 }}
-          whileHover={{ scale: 1.05 }}
-          whileTap={{ scale: 0.95 }}
         >
-          Start Your Project <span className="ml-2">→</span>
-        </motion.button>
+          <Link href="#contact" passHref legacyBehavior>
+            <motion.a
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
+              className="bg-white text-black px-8 py-4 rounded-full font-semibold shadow-lg hover:scale-105 transition-all duration-300 hover:shadow-xl inline-block"
+            >
+              Start Your Project <span className="ml-2">→</span>
+            </motion.a>
+          </Link>
+        </motion.div>
       </div>
 
       {/* Enhanced Slider */}

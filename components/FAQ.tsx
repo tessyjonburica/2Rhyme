@@ -52,7 +52,7 @@ export function FAQ() {
           <span className="inline-block px-4 py-2 rounded-full bg-[#1f1f23] text-gray-300 text-sm font-medium mb-4">
             FAQ
           </span>
-          <h2 className="text-3xl md:text-5xl font-bold text-white mb-6">
+          <h2 className="text-2xl md:text-4xl font-bold text-white mb-6">
             Here are answers to some of the questions
             <br />
             we get asked the most.

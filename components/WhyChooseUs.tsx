@@ -73,7 +73,7 @@ export function WhyChooseUs() {
             Why Clients Choose Us
           </span>
 
-          <h2 className="mx-auto mt-8 max-w-4xl text-3xl font-bold leading-tight text-white md:text-5xl">
+          <h2 className="mx-auto mt-8 max-w-4xl text-2xl font-bold leading-tight text-white md:text-4xl">
             Explore our latest projects and the stories
             <br className="hidden lg:block" />
             behind each design.
@@ -81,7 +81,7 @@ export function WhyChooseUs() {
         </motion.div>
 
         {/* Card grid */}
-        <div className="grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 lg:justify-items-center">
           {reasons.map((item, i) => (
             <motion.article
               key={item.title}
@@ -90,7 +90,7 @@ export function WhyChooseUs() {
               initial="hidden"
               whileInView="visible"
               viewport={{ once: true, amount: 0.3 }}
-              className="group relative overflow-hidden rounded-xl border border-white/5 bg-[#1B1B1E] p-8 transition hover:bg-[#27272A]/80"
+              className="group relative overflow-hidden rounded-xl border border-white/5 bg-[#1B1B1E] p-8 transition hover:bg-[#27272A]/80 h-full flex flex-col"
             >
               <div className="mb-6 flex h-10 w-10 items-center justify-center rounded-full border border-dashed border-white/20 bg-white/5 backdrop-blur-sm transition-all group-hover:scale-105">
                 {item.icon}
@@ -99,7 +99,7 @@ export function WhyChooseUs() {
               <h3 className="mb-3 text-lg font-semibold text-white">
                 {item.title}
               </h3>
-              <p className="text-sm leading-relaxed text-gray-300">
+              <p className="text-sm leading-relaxed text-gray-300 flex-1">
                 {item.description}
               </p>
             </motion.article>

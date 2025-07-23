@@ -5,6 +5,7 @@ import "./globals.css"
 import { ThemeProvider } from "@/components/ThemeProvider"
 import { Navbar } from "@/components/Navbar"
 import { Footer } from "@/components/Footer"
+import Head from "next/head"
 
 const inter = Inter({ subsets: ["latin"] })
 
@@ -49,6 +50,11 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en" suppressHydrationWarning>
+      <Head>
+        <link rel="icon" href="/favicon.ico" />
+        <link rel="shortcut icon" href="/favicon.ico" />
+        <link rel="apple-touch-icon" href="/icon.png" />
+      </Head>
       <body className={`${inter.className} bg-[#111113] text-white`}>
         <ThemeProvider attribute="class" defaultTheme="dark" enableSystem={false} disableTransitionOnChange>
           <Navbar />
