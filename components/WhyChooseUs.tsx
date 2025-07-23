@@ -80,30 +80,61 @@ export function WhyChooseUs() {
           </h2>
         </motion.div>
 
-        {/* Card grid */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 lg:justify-items-center">
-          {reasons.map((item, i) => (
-            <motion.article
-              key={item.title}
-              custom={i}
-              variants={cardVariants}
-              initial="hidden"
-              whileInView="visible"
-              viewport={{ once: true, amount: 0.3 }}
-              className="group relative overflow-hidden rounded-xl border border-white/5 bg-[#1B1B1E] p-8 transition hover:bg-[#27272A]/80 h-full flex flex-col"
-            >
-              <div className="mb-6 flex h-10 w-10 items-center justify-center rounded-full border border-dashed border-white/20 bg-white/5 backdrop-blur-sm transition-all group-hover:scale-105">
-                {item.icon}
-              </div>
+        {/* Card grid - matches the image layout */}
+        <div className="space-y-8">
+          {/* First row - 3 cards on desktop, responsive on smaller screens */}
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8">
+            {reasons.slice(0, 3).map((item, i) => (
+              <motion.article
+                key={item.title}
+                custom={i}
+                variants={cardVariants}
+                initial="hidden"
+                whileInView="visible"
+                viewport={{ once: true, amount: 0.3 }}
+                className="group relative overflow-hidden rounded-xl border border-white/5 bg-[#1B1B1E] p-8 transition hover:bg-[#27272A]/80 h-full flex flex-col"
+              >
+                <div className="mb-6 flex h-12 w-12 items-center justify-center rounded-full border border-dashed border-white/20 bg-white/5 backdrop-blur-sm transition-all group-hover:scale-105">
+                  {item.icon}
+                </div>
 
-              <h3 className="mb-3 text-lg font-semibold text-white">
-                {item.title}
-              </h3>
-              <p className="text-sm leading-relaxed text-gray-300 flex-1">
-                {item.description}
-              </p>
-            </motion.article>
-          ))}
+                <h3 className="mb-3 text-lg font-semibold text-white">
+                  {item.title}
+                </h3>
+                <p className="text-sm leading-relaxed text-gray-300 flex-1">
+                  {item.description}
+                </p>
+              </motion.article>
+            ))}
+          </div>
+
+          {/* Second row - 2 cards centered on desktop, responsive on smaller screens */}
+          <div className="flex justify-center">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6 lg:gap-8 max-w-2xl lg:max-w-4xl">
+              {reasons.slice(3, 5).map((item, i) => (
+                <motion.article
+                  key={item.title}
+                  custom={i + 3}
+                  variants={cardVariants}
+                  initial="hidden"
+                  whileInView="visible"
+                  viewport={{ once: true, amount: 0.3 }}
+                  className="group relative overflow-hidden rounded-xl border border-white/5 bg-[#1B1B1E] p-8 transition hover:bg-[#27272A]/80 h-full flex flex-col"
+                >
+                  <div className="mb-6 flex h-12 w-12 items-center justify-center rounded-full border border-dashed border-white/20 bg-white/5 backdrop-blur-sm transition-all group-hover:scale-105">
+                    {item.icon}
+                  </div>
+
+                  <h3 className="mb-3 text-lg font-semibold text-white">
+                    {item.title}
+                  </h3>
+                  <p className="text-sm leading-relaxed text-gray-300 flex-1">
+                    {item.description}
+                  </p>
+                </motion.article>
+              ))}
+            </div>
+          </div>
         </div>
       </div>
     </section>

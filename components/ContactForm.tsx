@@ -5,6 +5,12 @@ import { useState } from "react"
 import { motion } from "framer-motion"
 import { Send } from "lucide-react"
 
+// EmailJS configuration - Replace these with your actual values
+const EMAILJS_CONFIG = {
+  serviceId: "YOUR_SERVICE_ID",     // Replace with your EmailJS service ID
+  templateId: "YOUR_TEMPLATE_ID",   // Replace with your EmailJS template ID
+  publicKey: "YOUR_PUBLIC_KEY"      // Replace with your EmailJS public key
+}
 
 export function ContactForm() {
   const [formData, setFormData] = useState({
@@ -22,17 +28,45 @@ export function ContactForm() {
     setSubmissionStatus(null)
 
     try {
-      // Simulate form submission for demonstration
-      await new Promise((resolve) => setTimeout(resolve, 2000))
-      setSubmissionStatus("success")
-      alert("Message sent successfully!")
+      // Load EmailJS if not already loaded
+      if (!(window as any).emailjs) {
+        const script = document.createElement('script')
+        script.src = 'https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js'
+        document.head.appendChild(script)
+        
+        await new Promise((resolve, reject) => {
+          script.onload = resolve
+          script.onerror = reject
+        })
+      }
 
+      // Initialize EmailJS
+      ;(window as any).emailjs.init(EMAILJS_CONFIG.publicKey)
+
+      // Prepare template parameters
+      const templateParams = {
+        from_name: formData.name,
+        from_email: formData.email,
+        subject: formData.subject,
+        message: formData.message,
+        to_email: "your-email@example.com" // Replace with your email
+      }
+
+      // Send email
+      const response = await (window as any).emailjs.send(
+        EMAILJS_CONFIG.serviceId,
+        EMAILJS_CONFIG.templateId,
+        templateParams
+      )
+
+      console.log('Email sent successfully:', response)
+      setSubmissionStatus("success")
+      
       // Reset form
       setFormData({ name: "", email: "", subject: "", message: "" })
     } catch (error) {
       console.error("Failed to send message:", error)
       setSubmissionStatus("error")
-      alert("Failed to send message. Please try again later.")
     } finally {
       setIsSubmitting(false)
     }

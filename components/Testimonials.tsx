@@ -41,7 +41,9 @@ const testimonials = [
 ]
 
 export function Testimonials() {
-  const [currentIndex, setCurrentIndex] = useState(1) // Start with middle testimonial
+  const [currentIndex, setCurrentIndex] = useState(1)
+  const [touchStart, setTouchStart] = useState(null)
+  const [touchEnd, setTouchEnd] = useState(null)
 
   // Auto-advance testimonials
   useEffect(() => {
@@ -55,111 +57,155 @@ export function Testimonials() {
   const getPrevIndex = () => (currentIndex - 1 + testimonials.length) % testimonials.length
   const getNextIndex = () => (currentIndex + 1) % testimonials.length
 
+  // Touch handlers for mobile swipe
+  const handleTouchStart = (e) => {
+    setTouchEnd(null)
+    setTouchStart(e.targetTouches[0].clientX)
+  }
+
+  const handleTouchMove = (e) => {
+    setTouchEnd(e.targetTouches[0].clientX)
+  }
+
+  const handleTouchEnd = () => {
+    if (!touchStart || !touchEnd) return
+    const distance = touchStart - touchEnd
+    const isLeftSwipe = distance > 50
+    const isRightSwipe = distance < -50
+
+    if (isLeftSwipe) {
+      setCurrentIndex((prev) => (prev + 1) % testimonials.length)
+    }
+    if (isRightSwipe) {
+      setCurrentIndex((prev) => (prev - 1 + testimonials.length) % testimonials.length)
+    }
+  }
+
   return (
-    <section className="py-20 bg-[#0a0a0b] px-4" id="testimonials">
+    <section className="py-12 sm:py-16 lg:py-20 bg-[#0a0a0b] px-4 sm:px-6 lg:px-8" id="testimonials">
       <div className="max-w-7xl mx-auto">
         {/* Header */}
-        <div className="text-center mb-16">
-          <div className="inline-block px-4 py-2 rounded-full bg-[#1f1f23] text-gray-400 text-sm mb-6 border border-gray-700">
+        <div className="text-center mb-12 sm:mb-16">
+          <div className="inline-block px-3 sm:px-4 py-2 rounded-full bg-[#1f1f23] text-gray-400 text-xs sm:text-sm mb-4 sm:mb-6 border border-gray-700">
             Testimonial
           </div>
-          <h2 className="text-3xl md:text-4xl font-bold text-white">
+          <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-white px-4">
             What Our Client are Saying
           </h2>
         </div>
 
-        {/* Three Card Layout - Exact match to image */}
-        <div className="flex items-center justify-center gap-6 max-w-6xl mx-auto">
-          {/* Left Card - Dark */}
-          <div className="w-80 hidden lg:block">
-            <div className="bg-[#1a1a1d] p-6 rounded-2xl h-80">
-              <div className="flex items-center mb-4">
-                <img
-                  src={testimonials[getPrevIndex()].avatar}
-                  alt={testimonials[getPrevIndex()].name}
-                  className="w-12 h-12 rounded-full mr-3 object-cover"
-                />
-                <div>
-                  <h4 className="font-semibold text-white text-sm">
-                    {testimonials[getPrevIndex()].name}
-                  </h4>
-                  <p className="text-gray-400 text-xs">
-                    {testimonials[getPrevIndex()].position}
-                  </p>
+        {/* Responsive Layout */}
+        <div 
+          className="relative"
+          onTouchStart={handleTouchStart}
+          onTouchMove={handleTouchMove}
+          onTouchEnd={handleTouchEnd}
+        >
+          {/* Mobile: Single Card View */}
+          <div className="block lg:hidden">
+            <div className="max-w-sm mx-auto">
+              <div className="bg-white p-6 sm:p-8 rounded-2xl min-h-[280px] sm:min-h-[320px] shadow-xl">
+                <div className="flex items-center mb-4 sm:mb-6">
+                  <img
+                    src={testimonials[currentIndex].avatar}
+                    alt={testimonials[currentIndex].name}
+                    className="w-12 h-12 sm:w-14 sm:h-14 rounded-full mr-3 sm:mr-4 object-cover"
+                  />
+                  <div>
+                    <h4 className="font-bold text-gray-900 text-base sm:text-lg">
+                      {testimonials[currentIndex].name}
+                    </h4>
+                    <p className="text-gray-600 text-sm">
+                      {testimonials[currentIndex].position}
+                    </p>
+                  </div>
                 </div>
+                <p className="text-gray-800 text-sm sm:text-base leading-relaxed">
+                  {testimonials[currentIndex].content}
+                </p>
               </div>
-              <p className="text-gray-300 text-sm leading-relaxed">
-                {testimonials[getPrevIndex()].content}
-              </p>
             </div>
           </div>
 
-          {/* Center Card - White (Active) */}
-          <div className="w-96 flex-shrink-0">
-            <div className="bg-white p-8 rounded-2xl h-80 shadow-xl">
-              <div className="flex items-center mb-6">
-                <img
-                  src={testimonials[currentIndex].avatar}
-                  alt={testimonials[currentIndex].name}
-                  className="w-14 h-14 rounded-full mr-4 object-cover"
-                />
-                <div>
-                  <h4 className="font-bold text-gray-900 text-lg">
-                    {testimonials[currentIndex].name}
-                  </h4>
-                  <p className="text-gray-600 text-sm">
-                    {testimonials[currentIndex].position}
-                  </p>
+          {/* Desktop: Three Card Layout */}
+          <div className="hidden lg:flex items-center justify-center gap-4 xl:gap-6 max-w-6xl mx-auto">
+            {/* Left Card - Dark */}
+            <div className="w-72 xl:w-80 flex-shrink-0">
+              <div className="bg-[#1a1a1d] p-5 xl:p-6 rounded-2xl h-72 xl:h-80">
+                <div className="flex items-center mb-4">
+                  <img
+                    src={testimonials[getPrevIndex()].avatar}
+                    alt={testimonials[getPrevIndex()].name}
+                    className="w-11 h-11 xl:w-12 xl:h-12 rounded-full mr-3 object-cover"
+                  />
+                  <div>
+                    <h4 className="font-semibold text-white text-sm xl:text-base">
+                      {testimonials[getPrevIndex()].name}
+                    </h4>
+                    <p className="text-gray-400 text-xs xl:text-sm">
+                      {testimonials[getPrevIndex()].position}
+                    </p>
+                  </div>
                 </div>
+                <p className="text-gray-300 text-sm xl:text-base leading-relaxed">
+                  {testimonials[getPrevIndex()].content}
+                </p>
               </div>
-              <p className="text-gray-800 leading-relaxed">
-                {testimonials[currentIndex].content}
-              </p>
+            </div>
+
+            {/* Center Card - White (Active) */}
+            <div className="w-80 xl:w-96 flex-shrink-0">
+              <div className="bg-white p-6 xl:p-8 rounded-2xl h-72 xl:h-80 shadow-xl">
+                <div className="flex items-center mb-4 xl:mb-6">
+                  <img
+                    src={testimonials[currentIndex].avatar}
+                    alt={testimonials[currentIndex].name}
+                    className="w-12 h-12 xl:w-14 xl:h-14 rounded-full mr-3 xl:mr-4 object-cover"
+                  />
+                  <div>
+                    <h4 className="font-bold text-gray-900 text-base xl:text-lg">
+                      {testimonials[currentIndex].name}
+                    </h4>
+                    <p className="text-gray-600 text-sm xl:text-base">
+                      {testimonials[currentIndex].position}
+                    </p>
+                  </div>
+                </div>
+                <p className="text-gray-800 text-sm xl:text-base leading-relaxed">
+                  {testimonials[currentIndex].content}
+                </p>
+              </div>
+            </div>
+
+            {/* Right Card - Dark */}
+            <div className="w-72 xl:w-80 flex-shrink-0">
+              <div className="bg-[#1a1a1d] p-5 xl:p-6 rounded-2xl h-72 xl:h-80">
+                <div className="flex items-center mb-4">
+                  <img
+                    src={testimonials[getNextIndex()].avatar}
+                    alt={testimonials[getNextIndex()].name}
+                    className="w-11 h-11 xl:w-12 xl:h-12 rounded-full mr-3 object-cover"
+                  />
+                  <div>
+                    <h4 className="font-semibold text-white text-sm xl:text-base">
+                      {testimonials[getNextIndex()].name}
+                    </h4>
+                    <p className="text-gray-400 text-xs xl:text-sm">
+                      {testimonials[getNextIndex()].position}
+                    </p>
+                  </div>
+                </div>
+                <p className="text-gray-300 text-sm xl:text-base leading-relaxed">
+                  {testimonials[getNextIndex()].content}
+                </p>
+              </div>
             </div>
           </div>
 
-          {/* Right Card - Dark */}
-          <div className="w-80 hidden lg:block">
-            <div className="bg-[#1a1a1d] p-6 rounded-2xl h-80">
-              <div className="flex items-center mb-4">
-                <img
-                  src={testimonials[getNextIndex()].avatar}
-                  alt={testimonials[getNextIndex()].name}
-                  className="w-12 h-12 rounded-full mr-3 object-cover"
-                />
-                <div>
-                  <h4 className="font-semibold text-white text-sm">
-                    {testimonials[getNextIndex()].name}
-                  </h4>
-                  <p className="text-gray-400 text-xs">
-                    {testimonials[getNextIndex()].position}
-                  </p>
-                </div>
-              </div>
-              <p className="text-gray-300 text-sm leading-relaxed">
-                {testimonials[getNextIndex()].content}
-              </p>
-            </div>
-          </div>
+
         </div>
 
-        {/* Navigation Dots */}
-        <div className="flex justify-center mt-12 gap-2">
-          {testimonials.map((_, index) => (
-            <button
-              key={index}
-              onClick={() => setCurrentIndex(index)}
-              className={`
-                w-2 h-2 rounded-full transition-all duration-300
-                ${index === currentIndex 
-                  ? 'bg-white w-8' 
-                  : 'bg-gray-600 hover:bg-gray-500'
-                }
-              `}
-              aria-label={`Go to testimonial ${index + 1}`}
-            />
-          ))}
-        </div>
+
       </div>
     </section>
   )
