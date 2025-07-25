@@ -40,7 +40,7 @@ export function Footer() {
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true, amount: 0.4 }}
         transition={{ duration: 0.8 }}
-        className="mx-auto max-w-5xl text-3xl font-bold leading-tight text-white sm:text-5xl md:text-6xl"
+        className="mx-auto max-w-5xl text-2xl font-bold leading-tight text-white sm:text-4xl md:text-5xl"
       >
         Let’s Build Something
         <br className="hidden md:block" />
