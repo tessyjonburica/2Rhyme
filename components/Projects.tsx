@@ -1,13 +1,22 @@
 "use client"
 import React from 'react';
 import { motion } from 'framer-motion';
+import Image from 'next/image';
 
 const projects = [
   {
     title: "NFT Website",
     year: "2024",
+    description: "An immersive NFT marketplace designed to showcase, trade, and explore unique digital assets. This project combines visually captivating UI with seamless user experience, blending art and technology for collectors and creators alike.",
+    image: "/project1.png",
+    link: "#",
+    category: "Web Design"
+  },
+  {
+    title: "Flight Booking Website", 
+    year: "2023",
     description: "An intuitive and visually engaging flight booking platform that simplifies the user journey from search to checkout. Designed with a clean layout, streamlined navigation, and personalized filters to help users find, compare, and book flights effortlessly.",
-    image: "https://images.unsplash.com/photo-1436491865332-7a61a109cc05?w=600&h=400&fit=crop&crop=center",
+    image: "/project2.png",
     link: "#",
     category: "Web App"
   },
@@ -15,7 +24,7 @@ const projects = [
     title: "Car Sales Website",
     year: "2023", 
     description: "A sleek, user-friendly car sales website designed to enhance the online shopping experience. With intuitive navigation, high-quality visuals, and detailed car listings, this site connects buyers with their perfect vehicle in a seamless, engaging way.",
-    image: "https://images.unsplash.com/photo-1549317661-bd32c8ce0db2?w=600&h=400&fit=crop&crop=center",
+    image: "/project3.png",
     link: "#",
     category: "E-commerce"
   },
@@ -23,60 +32,11 @@ const projects = [
     title: "Food Delivery Mobile App",
     year: "2024",
     description: "A seamless, user-friendly design that brings favorite meals to users' fingertips. With a clean interface, smooth navigation, and real-time tracking, this app redefines convenience in food delivery, making it easy to browse, order, and enjoy.",
-    image: "https://images.unsplash.com/photo-1563379091339-03246963d96c?w=600&h=400&fit=crop&crop=center",
+    image: "/project4.png",
     link: "#",
     category: "Mobile App"
   }
 ];
-
-const containerVariants = {
-  hidden: { opacity: 0 },
-  visible: {
-    opacity: 1,
-    transition: {
-      staggerChildren: 0.2,
-      duration: 0.8
-    }
-  }
-};
-
-const itemVariants = {
-  hidden: { 
-    opacity: 0, 
-    y: 50,
-    scale: 0.95
-  },
-  visible: { 
-    opacity: 1, 
-    y: 0,
-    scale: 1,
-    transition: {
-      duration: 0.6,
-      ease: "easeOut"
-    }
-  }
-};
-
-const imageVariants = {
-  hover: {
-    scale: 1.05,
-    transition: {
-      duration: 0.4,
-      ease: "easeOut"
-    }
-  }
-};
-
-const cardVariants = {
-  hover: {
-    y: -8,
-    boxShadow: "0 20px 40px rgba(0, 0, 0, 0.1)",
-    transition: {
-      duration: 0.3,
-      ease: "easeOut"
-    }
-  }
-};
 
 export function Projects() {
   return (
@@ -111,49 +71,33 @@ export function Projects() {
           </motion.h2>
         </motion.div>
 
-        {/* Projects Grid */}
-        <motion.div
-          variants={containerVariants}
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true, margin: "-100px" }}
-          className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8"
-        >
+        {/* Projects Grid - Responsive: 1 col mobile, 2 cols tablet/desktop */}
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12">
           {projects.map((project, index) => (
             <motion.div
               key={index}
-              variants={itemVariants}
-              whileHover="hover"
+              initial={{ opacity: 0, y: 50 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6, delay: index * 0.1 }}
               className="group cursor-pointer"
             >
-              <motion.div
-                variants={cardVariants}
-                className="bg-card border border-border rounded-xl overflow-hidden h-full shadow-sm hover:shadow-lg transition-shadow duration-300"
-              >
-                {/* Image Container */}
-                <div className="relative overflow-hidden">
-                  <motion.img
-                    variants={imageVariants}
+              <div className="bg-card border border-border rounded-2xl overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300 hover:-translate-y-2">
+                {/* Project Image */}
+                <div className="relative overflow-hidden aspect-[4/3] bg-secondary">
+                  <Image
                     src={project.image}
                     alt={project.title}
-                    className="w-full h-64 object-cover"
+                    fill
+                    className="object-cover transition-transform duration-500 group-hover:scale-105"
+                    sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 50vw"
                   />
                   
                   {/* Overlay on hover */}
-                  <motion.div
-                    initial={{ opacity: 0 }}
-                    whileHover={{ opacity: 1 }}
-                    transition={{ duration: 0.3 }}
-                    className="absolute inset-0 bg-black/40 flex items-center justify-center"
-                  >
-                    <motion.div
-                      initial={{ scale: 0.8, opacity: 0 }}
-                      whileHover={{ scale: 1, opacity: 1 }}
-                      transition={{ duration: 0.3 }}
-                      className="bg-white/20 backdrop-blur-sm rounded-full p-3"
-                    >
+                  <div className="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
+                    <div className="bg-white/20 backdrop-blur-sm rounded-full p-4 transform scale-75 group-hover:scale-100 transition-transform duration-300">
                       <svg 
-                        className="w-6 h-6 text-white" 
+                        className="w-8 h-8 text-white" 
                         fill="none" 
                         stroke="currentColor" 
                         viewBox="0 0 24 24"
@@ -161,84 +105,64 @@ export function Projects() {
                         <path 
                           strokeLinecap="round" 
                           strokeLinejoin="round" 
-                          strokeWidth={2} 
+                          strokeWidth={1.5} 
                           d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" 
                         />
                         <path 
                           strokeLinecap="round" 
                           strokeLinejoin="round" 
-                          strokeWidth={2} 
+                          strokeWidth={1.5} 
                           d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z" 
                         />
                       </svg>
-                    </motion.div>
-                  </motion.div>
+                    </div>
+                  </div>
                 </div>
 
-                {/* Content */}
-                <div className="p-6 lg:p-8 flex-grow flex flex-col">
-                  {/* Category & Year */}
-                  <div className="flex items-center justify-between mb-4">
-                    <span className="text-xs font-medium text-blue-600 bg-blue-50 dark:bg-blue-900/20 dark:text-blue-400 px-3 py-1 rounded-full border border-blue-200 dark:border-blue-800">
-                      {project.category}
-                    </span>
-                    <span className="text-sm text-muted-foreground font-medium">
-                      {project.year}
-                    </span>
-                  </div>
-
-                  {/* Title */}
-                  <motion.h3 
-                    className="text-xl lg:text-2xl font-bold text-foreground mb-4 group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors duration-300"
-                  >
+                {/* Project Content */}
+                <div className="p-6 lg:p-8">
+                  {/* Project Title */}
+                  <h3 className="text-xl lg:text-2xl font-bold text-foreground mb-2 group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors duration-300">
                     {project.title}
-                  </motion.h3>
+                  </h3>
 
-                  {/* Description */}
-                  <p className="text-muted-foreground text-sm lg:text-base leading-relaxed flex-grow mb-6">
+                  {/* Project Year */}
+                  <p className="text-muted-foreground text-sm font-medium mb-4">
+                    {project.year}
+                  </p>
+
+                  {/* Project Description */}
+                  <p className="text-muted-foreground text-sm lg:text-base leading-relaxed mb-6">
                     {project.description}
                   </p>
 
-                  {/* View More Link */}
-                  <motion.div
-                    className="flex items-center justify-between"
+                  {/* View More Button */}
+                  <motion.a
+                    href={project.link}
+                    whileHover={{ x: 5 }}
+                    transition={{ duration: 0.2 }}
+                    className="inline-flex items-center text-foreground hover:text-blue-600 dark:hover:text-blue-400 text-sm font-medium transition-colors duration-300 group/link"
                   >
-                    <motion.a
-                      href={project.link}
-                      whileHover={{ x: 5 }}
-                      transition={{ duration: 0.2 }}
-                      className="inline-flex items-center text-foreground hover:text-blue-600 dark:hover:text-blue-400 text-sm font-medium transition-colors duration-300"
+                    View More
+                    <motion.svg 
+                      className="w-4 h-4 ml-2 transition-transform duration-200 group-hover/link:translate-x-1" 
+                      fill="none" 
+                      stroke="currentColor" 
+                      viewBox="0 0 24 24"
                     >
-                      View More
-                      <motion.svg 
-                        className="w-4 h-4 ml-2" 
-                        fill="none" 
-                        stroke="currentColor" 
-                        viewBox="0 0 24 24"
-                        whileHover={{ x: 3 }}
-                        transition={{ duration: 0.2 }}
-                      >
-                        <path 
-                          strokeLinecap="round" 
-                          strokeLinejoin="round" 
-                          strokeWidth={2} 
-                          d="M17 8l4 4m0 0l-4 4m4-4H3" 
-                        />
-                      </motion.svg>
-                    </motion.a>
-
-                    <motion.div
-                      initial={{ scale: 0, opacity: 0 }}
-                      whileInView={{ scale: 1, opacity: 1 }}
-                      transition={{ duration: 0.3, delay: index * 0.1 + 0.5 }}
-                      className="w-2 h-2 bg-blue-600 dark:bg-blue-400 rounded-full"
-                    />
-                  </motion.div>
+                      <path 
+                        strokeLinecap="round" 
+                        strokeLinejoin="round" 
+                        strokeWidth={2} 
+                        d="M17 8l4 4m0 0l-4 4m4-4H3" 
+                      />
+                    </motion.svg>
+                  </motion.a>
                 </div>
-              </motion.div>
+              </div>
             </motion.div>
           ))}
-        </motion.div>
+        </div>
       </div>
     </section>
   );

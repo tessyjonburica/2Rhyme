@@ -3,6 +3,7 @@
 import { useState, useEffect } from "react"
 import { Menu, X, ChevronDown, Sun, Moon } from "lucide-react"
 import { useTheme } from "next-themes"
+import Image from "next/image"
 
 export function Navbar() {
   const [isOpen, setIsOpen] = useState(false)
@@ -20,8 +21,8 @@ export function Navbar() {
   }, [])
 
   const navItems = [
-    { name: "Home", href: "#home" },
-    { name: "Services", href: "#services" },
+    { name: "Home", href: "#hero" }, // Updated to link to hero section
+    { name: "Services", href: "#expertise" }, // Updated to link to expertise section
     { name: "Projects", href: "#projects", hasDropdown: true },
     { name: "Contact Us", href: "#contact" },
   ]
@@ -41,21 +42,27 @@ export function Navbar() {
       }`}
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex items-center justify-between h-20">
+        <div className="flex items-center justify-between h-16 md:h-20">
           {/* Logo */}
-          <div className="flex items-center space-x-3 group cursor-pointer">
-            <div className="flex flex-col space-y-1.5 group-hover:scale-110 transition-transform duration-300">
-              <div className="w-7 h-0.5 bg-foreground group-hover:bg-gradient-to-r group-hover:from-foreground group-hover:to-muted-foreground transition-all duration-300"></div>
-              <div className="w-5 h-0.5 bg-foreground group-hover:bg-gradient-to-r group-hover:from-foreground group-hover:to-muted-foreground transition-all duration-300"></div>
-              <div className="w-7 h-0.5 bg-foreground group-hover:bg-gradient-to-r group-hover:from-foreground group-hover:to-muted-foreground transition-all duration-300"></div>
+          <div className="flex items-center space-x-2 md:space-x-3 group cursor-pointer">
+            {/* Icon Image */}
+            <div className="relative w-8 h-8 md:w-10 md:h-10 lg:w-12 lg:h-12 group-hover:scale-110 transition-transform duration-300">
+              <Image
+                src={theme === "dark" ? "/icon.png" : "/icon_black.png"}
+                alt="Emmy Designs Logo"
+                fill
+                className="object-contain"
+                priority
+              />
             </div>
-            <span className="text-xl font-bold text-foreground tracking-wide group-hover:text-muted-foreground transition-colors duration-300">
-              EMMY DESIGNS
+            {/* Text */}
+            <span className="text-lg md:text-xl lg:text-2xl font-bold text-foreground tracking-normal leading-8 group-hover:text-muted-foreground transition-colors duration-300" style={{ fontFamily: 'Intro, sans-serif', fontSize: 'clamp(18px, 4vw, 28px)', lineHeight: '32px' }}>
+              EMMYX DESIGNS
             </span>
           </div>
 
           {/* Desktop Navigation */}
-          <div className="hidden md:flex items-center space-x-10">
+          <div className="hidden md:flex items-center space-x-8 lg:space-x-10">
             {navItems.map((item, index) => (
               <a
                 key={item.name}
@@ -74,7 +81,7 @@ export function Navbar() {
           </div>
 
           {/* Right side */}
-          <div className="hidden md:flex items-center space-x-4">
+          <div className="hidden md:flex items-center space-x-3 lg:space-x-4">
             <button
               onClick={toggleTheme}
               className="p-2 rounded-full bg-secondary hover:bg-accent text-foreground transition-all duration-300 hover:scale-110"
@@ -83,14 +90,14 @@ export function Navbar() {
             </button>
             <a
               href="#contact"
-              className="relative bg-foreground text-background px-8 py-3 rounded-full font-semibold text-sm tracking-wide hover:bg-foreground/90 transition-all duration-300 hover:scale-105 hover:shadow-lg overflow-hidden group"
+              className="relative bg-foreground text-background px-6 lg:px-8 py-2.5 lg:py-3 rounded-full font-semibold text-sm tracking-wide hover:bg-foreground/90 transition-all duration-300 hover:scale-105 hover:shadow-lg overflow-hidden group"
             >
               <span className="relative z-10">Get in Touch</span>
             </a>
           </div>
 
           {/* Mobile menu button */}
-          <div className="md:hidden flex items-center space-x-3">
+          <div className="md:hidden flex items-center space-x-2">
             <button
               onClick={toggleTheme}
               className="p-2 rounded-full bg-secondary hover:bg-accent text-foreground transition-all duration-300"
