@@ -11,11 +11,11 @@ import {
 
 export function Footer() {
   return (
-    <footer className="relative isolate overflow-hidden bg-[#0a0a0b] py-32 px-4 text-center">
+    <footer className="relative isolate overflow-hidden bg-background py-32 px-4 text-center transition-colors duration-300">
       {/* ===== Decorative background lines ===== */}
       <svg
         aria-hidden="true"
-        className="pointer-events-none absolute bottom-0 left-0 -z-10 h-48 w-full text-white/5 sm:h-56 md:h-64"
+        className="pointer-events-none absolute bottom-0 left-0 -z-10 h-48 w-full text-border sm:h-56 md:h-64"
         viewBox="0 0 1440 320"
         preserveAspectRatio="none"
       >
@@ -40,9 +40,9 @@ export function Footer() {
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true, amount: 0.4 }}
         transition={{ duration: 0.8 }}
-        className="mx-auto max-w-5xl text-2xl font-bold leading-tight text-white sm:text-4xl md:text-5xl"
+        className="mx-auto max-w-5xl text-2xl font-bold leading-tight text-foreground sm:text-4xl md:text-5xl"
       >
-        Let’s Build Something
+        Let's Build Something
         <br className="hidden md:block" />
         Beautiful Together
       </motion.h2>
@@ -57,18 +57,18 @@ export function Footer() {
       >
         <Link
           href="#contact"
-          className="group inline-flex items-center rounded-full bg-white/90 px-6 py-2 text-sm font-semibold text-gray-900 backdrop-blur transition hover:bg-white focus-visible:outline-none"
+          className="group inline-flex items-center rounded-full bg-foreground/90 px-6 py-2 text-sm font-semibold text-background backdrop-blur transition hover:bg-foreground focus-visible:outline-none"
         >
           <span>Get in Touch</span>
-          <span className="ml-3 flex h-8 w-8 items-center justify-center rounded-full bg-black text-white transition-transform group-hover:translate-x-1">
+          <span className="ml-3 flex h-8 w-8 items-center justify-center rounded-full bg-background text-foreground transition-transform group-hover:translate-x-1">
             <ArrowRight className="h-4 w-4" />
           </span>
         </Link>
       </motion.div>
 
       {/* ===== Bottom bar ===== */}
-      <div className="absolute bottom-6 left-4 text-xs text-white/60">
-        © {new Date().getFullYear()} Emmy Designs
+      <div className="absolute bottom-6 left-4 text-xs text-muted-foreground">
+        © {new Date().getFullYear()} Emmy Designs
       </div>
 
       <div className="absolute bottom-6 right-4 flex items-center gap-6">
@@ -76,25 +76,25 @@ export function Footer() {
           href="https://instagram.com"
           aria-label="Instagram"
           target="_blank"
-          className="transition hover:text-white/90"
+          className="transition hover:text-foreground/90"
         >
-          <Instagram className="h-5 w-5 text-white/60" />
+          <Instagram className="h-5 w-5 text-muted-foreground" />
         </Link>
         <Link
           href="https://twitter.com"
           aria-label="Twitter"
           target="_blank"
-          className="transition hover:text-white/90"
+          className="transition hover:text-foreground/90"
         >
-          <Twitter className="h-5 w-5 text-white/60" />
+          <Twitter className="h-5 w-5 text-muted-foreground" />
         </Link>
         <Link
           href="https://facebook.com"
           aria-label="Facebook"
           target="_blank"
-          className="transition hover:text-white/90"
+          className="transition hover:text-foreground/90"
         >
-          <Facebook className="h-5 w-5 text-white/60" />
+          <Facebook className="h-5 w-5 text-muted-foreground" />
         </Link>
       </div>
     </footer>

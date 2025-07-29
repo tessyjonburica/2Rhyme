@@ -2,7 +2,7 @@
 
 import { useState } from "react"
 import { motion, AnimatePresence } from "framer-motion"
-import { Plus, Minus } from "lucide-react" // Changed from ChevronDown to Plus/Minus
+import { Plus, Minus } from "lucide-react"
 
 export function FAQ() {
   const [openIndex, setOpenIndex] = useState<number | null>(5) // Set initial open index to 5 to match screenshot
@@ -41,7 +41,7 @@ export function FAQ() {
   ]
 
   return (
-    <section className="py-20 bg-[#111113] px-4" id="faq">
+    <section className="py-20 bg-background px-4 transition-colors duration-300" id="faq">
       <div className="max-w-4xl mx-auto">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -49,36 +49,36 @@ export function FAQ() {
           transition={{ duration: 0.8 }}
           className="text-center mb-16"
         >
-          <span className="inline-block px-4 py-2 rounded-full bg-[#1f1f23] text-gray-300 text-sm font-medium mb-4">
+          <span className="inline-block px-4 py-2 rounded-full bg-secondary text-muted-foreground text-sm font-medium mb-4 border border-border">
             FAQ
           </span>
-          <h2 className="text-2xl md:text-4xl font-bold text-white mb-6">
+          <h2 className="text-2xl md:text-4xl font-bold text-foreground mb-6">
             Here are answers to some of the questions
             <br />
             we get asked the most.
           </h2>
         </motion.div>
 
-        <div className="space-y-4 bg-[#1f1f23] rounded-lg p-4 md:p-8">
+        <div className="space-y-4 bg-card border border-border rounded-lg p-4 md:p-8">
           {faqData.map((item, index) => (
             <motion.div
               key={index}
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: index * 0.05 }}
-              className="border-b border-gray-700 last:border-b-0"
+              className="border-b border-border last:border-b-0"
             >
               <button
                 onClick={() => setOpenIndex(openIndex === index ? null : index)}
-                className="w-full px-2 py-4 text-left flex items-center justify-between hover:bg-[#27272a] transition-colors rounded-md"
+                className="w-full px-2 py-4 text-left flex items-center justify-between hover:bg-accent transition-colors rounded-md"
               >
-                <span className={`text-white font-medium ${openIndex === index ? "font-bold" : ""}`}>
+                <span className={`text-foreground font-medium ${openIndex === index ? "font-bold" : ""}`}>
                   {item.question}
                 </span>
                 {openIndex === index ? (
-                  <Minus className="h-5 w-5 text-gray-400" />
+                  <Minus className="h-5 w-5 text-muted-foreground" />
                 ) : (
-                  <Plus className="h-5 w-5 text-gray-400" />
+                  <Plus className="h-5 w-5 text-muted-foreground" />
                 )}
               </button>
               <AnimatePresence>
@@ -91,7 +91,7 @@ export function FAQ() {
                     className="overflow-hidden"
                   >
                     <div className="px-2 pb-4">
-                      <p className="text-gray-300">{item.answer}</p>
+                      <p className="text-muted-foreground">{item.answer}</p>
                     </div>
                   </motion.div>
                 )}

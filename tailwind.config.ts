@@ -7,26 +7,26 @@ const config: Config = {
     "./app/**/*.{js,ts,jsx,tsx,mdx}",
     "*.{js,ts,jsx,tsx,mdx}",
   ],
+  darkMode: "class",
   theme: {
     extend: {
       colors: {
-        background: "#111113",
-        foreground: "#ffffff",
+        background: "rgb(var(--background) / <alpha-value>)",
+        foreground: "rgb(var(--foreground) / <alpha-value>)",
+        card: "rgb(var(--card) / <alpha-value>)",
+        "card-foreground": "rgb(var(--card-foreground) / <alpha-value>)",
+        secondary: "rgb(var(--secondary) / <alpha-value>)",
+        "secondary-foreground": "rgb(var(--secondary-foreground) / <alpha-value>)",
+        muted: "rgb(var(--muted) / <alpha-value>)",
+        "muted-foreground": "rgb(var(--muted-foreground) / <alpha-value>)",
+        accent: "rgb(var(--accent) / <alpha-value>)",
+        "accent-foreground": "rgb(var(--accent-foreground) / <alpha-value>)",
+        border: "rgb(var(--border) / <alpha-value>)",
+        input: "rgb(var(--input) / <alpha-value>)",
+        ring: "rgb(var(--ring) / <alpha-value>)",
         primary: {
-          DEFAULT: "#ffffff",
-          foreground: "#111113",
-        },
-        secondary: {
-          DEFAULT: "#1f1f23",
-          foreground: "#ffffff",
-        },
-        muted: {
-          DEFAULT: "#27272a",
-          foreground: "#a1a1aa",
-        },
-        accent: {
-          DEFAULT: "#3f3f46",
-          foreground: "#ffffff",
+          DEFAULT: "rgb(var(--foreground) / <alpha-value>)",
+          foreground: "rgb(var(--background) / <alpha-value>)",
         },
       },
       fontFamily: {

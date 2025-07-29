@@ -80,7 +80,7 @@ export function ContactForm() {
   }
 
   return (
-    <section id="contact" className="py-20 bg-[#111113] px-4">
+    <section id="contact" className="py-20 bg-background px-4 transition-colors duration-300">
       <div className="max-w-3xl mx-auto">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -88,10 +88,10 @@ export function ContactForm() {
           transition={{ duration: 0.8 }}
           className="text-center mb-12"
         >
-          <span className="inline-block px-4 py-2 rounded-full bg-[#1f1f23] text-gray-300 text-sm font-medium mb-4">
+          <span className="inline-block px-4 py-2 rounded-full bg-secondary text-muted-foreground text-sm font-medium mb-4 border border-border">
             Contact Us
           </span>
-          <h2 className="text-2xl md:text-3xl font-bold text-white mb-6">
+          <h2 className="text-2xl md:text-3xl font-bold text-foreground mb-6">
             Reach out, and let's discuss your next project!
           </h2>
         </motion.div>
@@ -100,11 +100,11 @@ export function ContactForm() {
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.2 }}
-          className="bg-[#1f1f23] p-8 rounded-xl shadow-lg"
+          className="bg-card border border-border p-8 rounded-xl shadow-lg"
         >
           <form onSubmit={handleSubmit} className="space-y-6">
             <div>
-              <label htmlFor="name" className="block text-sm font-medium text-gray-300 mb-2">
+              <label htmlFor="name" className="block text-sm font-medium text-foreground mb-2">
                 Name
               </label>
               <input
@@ -115,11 +115,11 @@ export function ContactForm() {
                 value={formData.name}
                 onChange={handleChange}
                 required
-                className="w-full bg-[#2a2a2e] border border-gray-700 rounded-lg px-4 py-3 text-white placeholder-gray-500 focus:outline-none focus:border-white transition-colors"
+                className="w-full bg-secondary border border-border rounded-lg px-4 py-3 text-foreground placeholder-muted-foreground focus:outline-none focus:border-foreground transition-colors"
               />
             </div>
             <div>
-              <label htmlFor="email" className="block text-sm font-medium text-gray-300 mb-2">
+              <label htmlFor="email" className="block text-sm font-medium text-foreground mb-2">
                 Email
               </label>
               <input
@@ -130,26 +130,11 @@ export function ContactForm() {
                 value={formData.email}
                 onChange={handleChange}
                 required
-                className="w-full bg-[#2a2a2e] border border-gray-700 rounded-lg px-4 py-3 text-white placeholder-gray-500 focus:outline-none focus:border-white transition-colors"
+                className="w-full bg-secondary border border-border rounded-lg px-4 py-3 text-foreground placeholder-muted-foreground focus:outline-none focus:border-foreground transition-colors"
               />
             </div>
             <div>
-              <label htmlFor="subject" className="block text-sm font-medium text-gray-300 mb-2">
-                Subject
-              </label>
-              <input
-                type="text"
-                id="subject"
-                name="subject"
-                placeholder=""
-                value={formData.subject}
-                onChange={handleChange}
-                required
-                className="w-full bg-[#2a2a2e] border border-gray-700 rounded-lg px-4 py-3 text-white placeholder-gray-500 focus:outline-none focus:border-white transition-colors"
-              />
-            </div>
-            <div>
-              <label htmlFor="message" className="block text-sm font-medium text-gray-300 mb-2">
+              <label htmlFor="message" className="block text-sm font-medium text-foreground mb-2">
                 Message
               </label>
               <textarea
@@ -160,13 +145,13 @@ export function ContactForm() {
                 value={formData.message}
                 onChange={handleChange}
                 required
-                className="w-full bg-[#2a2a2e] border border-gray-700 rounded-lg px-4 py-3 text-white placeholder-gray-500 focus:outline-none focus:border-white transition-colors resize-none"
+                className="w-full bg-secondary border border-border rounded-lg px-4 py-3 text-foreground placeholder-muted-foreground focus:outline-none focus:border-foreground transition-colors resize-none"
               ></textarea>
             </div>
             <button
               type="submit"
               disabled={isSubmitting}
-              className="w-full bg-white text-black px-8 py-3 rounded-lg font-medium hover:bg-gray-200 transition-colors disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center space-x-2"
+              className="w-full bg-foreground text-background px-8 py-3 rounded-lg font-medium hover:bg-foreground/90 transition-colors disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center space-x-2"
             >
               {isSubmitting ? (
                 <span>Sending...</span>

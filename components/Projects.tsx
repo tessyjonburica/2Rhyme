@@ -6,14 +6,6 @@ const projects = [
   {
     title: "NFT Website",
     year: "2024",
-    description: "An immersive NFT marketplace designed to showcase, trade, and explore unique digital assets. This project combines visually captivating UI with seamless user experience, blending art and technology for collectors and creators alike.",
-    image: "https://images.unsplash.com/photo-1620321023374-d1a68fbc720d?w=600&h=400&fit=crop&crop=center",
-    link: "#",
-    category: "Web Design"
-  },
-  {
-    title: "Flight Booking Website", 
-    year: "2023",
     description: "An intuitive and visually engaging flight booking platform that simplifies the user journey from search to checkout. Designed with a clean layout, streamlined navigation, and personalized filters to help users find, compare, and book flights effortlessly.",
     image: "https://images.unsplash.com/photo-1436491865332-7a61a109cc05?w=600&h=400&fit=crop&crop=center",
     link: "#",
@@ -78,7 +70,7 @@ const imageVariants = {
 const cardVariants = {
   hover: {
     y: -8,
-    boxShadow: "0 20px 40px rgba(0, 0, 0, 0.3)",
+    boxShadow: "0 20px 40px rgba(0, 0, 0, 0.1)",
     transition: {
       duration: 0.3,
       ease: "easeOut"
@@ -88,7 +80,7 @@ const cardVariants = {
 
 export function Projects() {
   return (
-    <section id="projects" className="py-20 bg-[#111113] px-4">
+    <section id="projects" className="py-20 bg-background px-4 transition-colors duration-300">
       <div className="max-w-7xl mx-auto">
         {/* Header */}
         <motion.div
@@ -103,7 +95,7 @@ export function Projects() {
             whileInView={{ opacity: 1, scale: 1 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6, delay: 0.2 }}
-            className="inline-block px-4 py-1 rounded-full bg-gray-800/50 text-gray-400 text-sm font-medium mb-4"
+            className="inline-block px-4 py-1 rounded-full bg-secondary text-muted-foreground text-sm font-medium mb-4 border border-border"
           >
             Projects
           </motion.span>
@@ -113,7 +105,7 @@ export function Projects() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.8, delay: 0.3 }}
-            className="text-2xl md:text-4xl font-bold text-white mb-6"
+            className="text-2xl md:text-4xl font-bold text-foreground mb-6"
           >
             We turn bold ideas into engaging, inspiring designs.
           </motion.h2>
@@ -136,7 +128,7 @@ export function Projects() {
             >
               <motion.div
                 variants={cardVariants}
-                className="bg-[#1f1f23] border-none rounded-xl overflow-hidden h-full"
+                className="bg-card border border-border rounded-xl overflow-hidden h-full shadow-sm hover:shadow-lg transition-shadow duration-300"
               >
                 {/* Image Container */}
                 <div className="relative overflow-hidden">
@@ -187,23 +179,23 @@ export function Projects() {
                 <div className="p-6 lg:p-8 flex-grow flex flex-col">
                   {/* Category & Year */}
                   <div className="flex items-center justify-between mb-4">
-                    <span className="text-xs font-medium text-blue-400 bg-blue-400/10 px-3 py-1 rounded-full border border-blue-400/20">
+                    <span className="text-xs font-medium text-blue-600 bg-blue-50 dark:bg-blue-900/20 dark:text-blue-400 px-3 py-1 rounded-full border border-blue-200 dark:border-blue-800">
                       {project.category}
                     </span>
-                    <span className="text-sm text-gray-400 font-medium">
+                    <span className="text-sm text-muted-foreground font-medium">
                       {project.year}
                     </span>
                   </div>
 
                   {/* Title */}
                   <motion.h3 
-                    className="text-xl lg:text-2xl font-bold text-white mb-4 group-hover:text-blue-400 transition-colors duration-300"
+                    className="text-xl lg:text-2xl font-bold text-foreground mb-4 group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors duration-300"
                   >
                     {project.title}
                   </motion.h3>
 
                   {/* Description */}
-                  <p className="text-gray-300 text-sm lg:text-base leading-relaxed flex-grow mb-6">
+                  <p className="text-muted-foreground text-sm lg:text-base leading-relaxed flex-grow mb-6">
                     {project.description}
                   </p>
 
@@ -215,7 +207,7 @@ export function Projects() {
                       href={project.link}
                       whileHover={{ x: 5 }}
                       transition={{ duration: 0.2 }}
-                      className="inline-flex items-center text-white hover:text-blue-400 text-sm font-medium transition-colors duration-300"
+                      className="inline-flex items-center text-foreground hover:text-blue-600 dark:hover:text-blue-400 text-sm font-medium transition-colors duration-300"
                     >
                       View More
                       <motion.svg 
@@ -239,7 +231,7 @@ export function Projects() {
                       initial={{ scale: 0, opacity: 0 }}
                       whileInView={{ scale: 1, opacity: 1 }}
                       transition={{ duration: 0.3, delay: index * 0.1 + 0.5 }}
-                      className="w-2 h-2 bg-blue-400 rounded-full"
+                      className="w-2 h-2 bg-blue-600 dark:bg-blue-400 rounded-full"
                     />
                   </motion.div>
                 </div>

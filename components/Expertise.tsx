@@ -51,7 +51,7 @@ const services = [
 
 export function Expertise() {
   return (
-    <section id="expertise" className="bg-[#111113] py-20 px-4">
+    <section id="expertise" className="bg-background py-20 px-4 transition-colors duration-300">
       <div className="max-w-7xl mx-auto">
         {/* Top heading */}
         <motion.div
@@ -61,10 +61,10 @@ export function Expertise() {
           transition={{ duration: 0.8 }}
           className="text-center mb-16"
         >
-          <span className="inline-block rounded-full border border-white/10 bg-white/5 px-4 py-1 text-sm font-medium tracking-widest text-white">
+          <span className="inline-block rounded-full border border-border bg-secondary px-4 py-1 text-sm font-medium tracking-widest text-foreground">
             Expertise
           </span>
-          <h2 className="mt-6 text-2xl font-bold text-white md:text-4xl">
+          <h2 className="mt-6 text-2xl font-bold text-foreground md:text-4xl">
             Services Tailored for You.
           </h2>
         </motion.div>
@@ -78,15 +78,17 @@ export function Expertise() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, amount: 0.3 }}
               transition={{ duration: 0.6, delay: i * 0.1 }}
-              className="rounded-xl border border-white/5 bg-[#1f1f23] p-6 transition hover:bg-[#27272a]"
+              className="rounded-xl border border-border bg-card p-6 transition hover:bg-accent"
             >
-              <div className="mb-4 flex h-10 w-10 items-center justify-center rounded-full border border-dashed border-white/20 bg-white/5 backdrop-blur-sm">
-                {service.icon}
+              <div className="mb-4 flex h-10 w-10 items-center justify-center rounded-full border border-dashed border-border bg-secondary backdrop-blur-sm">
+                <div className="text-foreground">
+                  {service.icon}
+                </div>
               </div>
-              <h3 className="text-white font-semibold text-lg mb-2">
+              <h3 className="text-foreground font-semibold text-lg mb-2">
                 {service.title}
               </h3>
-              <p className="text-gray-300 text-sm leading-relaxed">
+              <p className="text-muted-foreground text-sm leading-relaxed">
                 {service.description}
               </p>
             </motion.div>

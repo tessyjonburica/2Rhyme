@@ -8,7 +8,7 @@ import { ContactForm } from "@/components/ContactForm"
 
 export default function Home() {
   return (
-    <div className="bg-[#111113]">
+    <div className="bg-background transition-colors duration-300">
       <Hero />
       <WhyChooseUs />
       <Expertise />

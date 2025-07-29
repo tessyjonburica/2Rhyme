@@ -21,11 +21,10 @@ export function Hero() {
   }, []);
 
   return (
-    <section className="relative flex flex-col items-center justify-center min-h-[80vh] bg-[#111113] overflow-hidden px-4">
-      {/* Removed sparkles */}
+    <section className="relative flex flex-col items-center justify-center min-h-[80vh] bg-background overflow-hidden px-4 transition-colors duration-300">
       <div className="text-center mt-20 md:mt-36 z-20">
         <motion.h1 
-          className="text-4xl md:text-6xl lg:text-7xl font-bold text-white mb-4 leading-tight"
+          className="text-4xl md:text-6xl lg:text-7xl font-bold text-foreground mb-4 leading-tight"
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}
@@ -37,7 +36,7 @@ export function Hero() {
         </motion.h1>
         
         <motion.p 
-          className="text-gray-300 text-lg md:text-xl mb-8 max-w-2xl mx-auto"
+          className="text-muted-foreground text-lg md:text-xl mb-8 max-w-2xl mx-auto"
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.3, duration: 0.8 }}
@@ -54,7 +53,7 @@ export function Hero() {
             <motion.a
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
-              className="bg-white text-black px-8 py-4 rounded-full font-semibold shadow-lg hover:scale-105 transition-all duration-300 hover:shadow-xl inline-block"
+              className="bg-foreground text-background px-8 py-4 rounded-full font-semibold shadow-lg hover:scale-105 transition-all duration-300 hover:shadow-xl inline-block"
             >
               Start Your Project <span className="ml-2">→</span>
             </motion.a>
@@ -104,7 +103,7 @@ export function Hero() {
             <motion.button
               key={idx}
               className={`w-2 h-2 rounded-full transition-all duration-300 ${
-                idx === current ? 'bg-white scale-125' : 'bg-gray-500'
+                idx === current ? 'bg-foreground scale-125' : 'bg-muted-foreground'
               }`}
               onClick={() => setCurrent(idx)}
               whileHover={{ scale: 1.2 }}
