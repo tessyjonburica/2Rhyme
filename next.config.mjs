@@ -11,7 +11,7 @@ const nextConfig = {
     domains: ['images.unsplash.com'],
   },
   experimental: {
-    esmExternals: false,
+    // esmExternals: false, // Removed as it's not recommended
   },
 }
 
