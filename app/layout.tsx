@@ -1,11 +1,10 @@
 import type React from "react"
 import type { Metadata } from "next"
-import { Inter } from "next/font/google"
+import { Inter } from 'next/font/google'
 import "./globals.css"
 import { ThemeProvider } from "@/components/ThemeProvider"
 import { Navbar } from "@/components/Navbar"
 import { Footer } from "@/components/Footer"
-import Head from "next/head"
 
 const inter = Inter({ subsets: ["latin"] })
 
@@ -41,6 +40,7 @@ export const metadata: Metadata = {
       "max-snippet": -1,
     },
   },
+    generator: 'v0.dev'
 }
 
 export default function RootLayout({
@@ -50,11 +50,6 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en" suppressHydrationWarning>
-      <Head>
-        <link rel="icon" href="/favicon.ico" />
-        <link rel="shortcut icon" href="/favicon.ico" />
-        <link rel="apple-touch-icon" href="/icon.png" />
-      </Head>
       <body className={`${inter.className} bg-background text-foreground transition-colors duration-300`}>
         <ThemeProvider attribute="class" defaultTheme="dark" enableSystem={false} disableTransitionOnChange={false}>
           <Navbar />
