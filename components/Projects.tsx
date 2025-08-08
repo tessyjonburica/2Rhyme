@@ -6,7 +6,7 @@ import { ProjectCard } from './ProjectCard'; // Import the new ProjectCard compo
 const projects = [
   {
     "title": "Fincra",
-    "year": "2024",
+    "year": "2025",
     "description": "A sleek fintech platform designed with a calming blue-themed interface, Fincra streamlines cross-border payments and digital transactions. Built for speed, security, and clarity, it offers users a frictionless way to manage finances while maintaining a visually engaging and intuitive experience.",
     "image": "/fincra.png",
     "link": "#",
@@ -46,7 +46,7 @@ const projects = [
   },
   {
     "title": "Tech City",
-    "year": "2024",
+    "year": "2025",
     "description": "An engaging e-learning platform that integrates course management, student progress tracking, and interactive learning tools. Tech City creates an immersive educational environment that keeps learners motivated and educators in control.",
     "image": "/techcity.png",
     "link": "#",
@@ -54,7 +54,7 @@ const projects = [
   },
   {
     "title": "Discovery Place",
-    "year": "2024",
+    "year": "2025",
     "description": "A next-generation real estate platform offering advanced property search, smart filters, and immersive virtual tours. Discovery Place makes it effortless for buyers to explore and evaluate properties from anywhere, at any time.",
     "image": "/discovery.png",
     "link": "#",
