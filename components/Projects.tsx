@@ -5,76 +5,76 @@ import { ProjectCard } from './ProjectCard'; // Import the new ProjectCard compo
 
 const projects = [
   {
-    title: "NFT Marketplace",
-    year: "2024",
-    description: "Immersive NFT marketplace for trading unique digital assets with seamless UX.",
-    image: "/project1.png",
-    link: "#",
-    category: "Web Design"
+    "title": "Fincra",
+    "year": "2024",
+    "description": "A sleek fintech platform designed with a calming blue-themed interface, Fincra streamlines cross-border payments and digital transactions. Built for speed, security, and clarity, it offers users a frictionless way to manage finances while maintaining a visually engaging and intuitive experience.",
+    "image": "/fincra.png",
+    "link": "#",
+    "category": "Finance"
   },
   {
-    title: "Flight Booking App", 
-    year: "2023",
-    description: "Intuitive flight booking platform with streamlined navigation and filters.",
-    image: "/project2.png",
-    link: "#",
-    category: "Web App"
+    "title": "CART",
+    "year": "2023",
+    "description": "A robust logistics management system engineered for efficiency and ease of use. CART simplifies shipment tracking, delivery coordination, and fleet oversight with an intuitive interface and optimized workflows that enhance both operational performance and user satisfaction.",
+    "image": "/cart.png",
+    "link": "#",
+    "category": "Logistics"
   },
   {
-    title: "Car Sales Platform",
-    year: "2023", 
-    description: "Sleek car sales website connecting buyers with their perfect vehicle.",
-    image: "/project3.png",
-    link: "#",
-    category: "E-commerce"
+    "title": "SV Vehicles",
+    "year": "2023",
+    "description": "An elegant automotive marketplace connecting buyers to their ideal vehicles. SV Vehicles blends smart search tools with immersive visuals, enabling users to explore and secure automated car options effortlessly through a polished, mobile-friendly experience.",
+    "image": "/sv.png",
+    "link": "#",
+    "category": "Automative Industry"
   },
   {
-    title: "Food Delivery App",
-    year: "2024",
-    description: "User-friendly food delivery app with real-time tracking and smooth ordering.",
-    image: "/project4.png",
-    link: "#",
-    category: "Mobile App"
+    "title": "Food Delivery App",
+    "year": "2024",
+    "description": "A modern food delivery solution offering smooth ordering, personalized menus, and real-time GPS tracking. Designed for convenience, it ensures customers enjoy a quick, reliable, and visually appealing journey from selection to doorstep delivery.",
+    "image": "/food.png",
+    "link": "#",
+    "category": "Food App"
   },
   {
-    title: "Fitness Dashboard",
-    year: "2024",
-    description: "Comprehensive fitness dashboard with data visualization and progress tracking.",
-    image: "/project1.png",
-    link: "#",
-    category: "Dashboard"
+    "title": "Finance Dashboard",
+    "year": "2024",
+    "description": "A dynamic finance dashboard that transforms complex data into clear, actionable insights. With interactive charts, progress trackers, and goal monitoring, it empowers users to make informed financial decisions with confidence and precision.",
+    "image": "/dashboard.png",
+    "link": "#",
+    "category": "Dashboard"
   },
   {
-    title: "E-learning Platform",
-    year: "2023",
-    description: "Interactive learning platform with course management and student tracking.",
-    image: "/project2.png",
-    link: "#",
-    category: "Education"
+    "title": "Tech City",
+    "year": "2024",
+    "description": "An engaging e-learning platform that integrates course management, student progress tracking, and interactive learning tools. Tech City creates an immersive educational environment that keeps learners motivated and educators in control.",
+    "image": "/techcity.png",
+    "link": "#",
+    "category": "Education"
   },
   {
-    title: "Real Estate Portal",
-    year: "2024",
-    description: "Modern real estate platform with advanced search and virtual tours.",
-    image: "/project3.png",
-    link: "#",
-    category: "Real Estate"
+    "title": "Discovery Place",
+    "year": "2024",
+    "description": "A next-generation real estate platform offering advanced property search, smart filters, and immersive virtual tours. Discovery Place makes it effortless for buyers to explore and evaluate properties from anywhere, at any time.",
+    "image": "/discovery.png",
+    "link": "#",
+    "category": "Real Estate"
   },
   {
-    title: "Social Media App",
-    year: "2023",
-    description: "Engaging social platform with content sharing and community features.",
-    image: "/project4.png",
-    link: "#",
-    category: "Social"
+    "title": "Brand Store",
+    "year": "2023",
+    "description": "A stylish eCommerce platform tailored for clothing brands, combining fast-loading product displays with secure checkout. Brand Store delivers a smooth, visually rich shopping experience that enhances customer engagement and brand identity.",
+    "image": "/project4.png",
+    "link": "#",
+    "category": "Brand App"
   },
   {
-    title: "Crypto Dashboard",
-    year: "2024",
-    description: "Advanced trading interface with real-time market data and portfolio management.",
-    image: "/project1.png",
-    link: "#",
-    category: "Fintech"
+    "title": "Akagum",
+    "year": "2024",
+    "description": "An intelligent savings platform designed for financially savvy users. Akagum offers automated saving plans, goal tracking, and insightful analytics, making it easier than ever to grow wealth with discipline and smart strategy.",
+    "image": "/akagum.png",
+    "link": "#",
+    "category": "Savings"
   }
 ];
 
