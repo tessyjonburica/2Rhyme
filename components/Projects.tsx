@@ -64,7 +64,7 @@ const projects = [
     "title": "Brand Store",
     "year": "2023",
     "description": "A stylish eCommerce platform tailored for clothing brands, combining fast-loading product displays with secure checkout. Brand Store delivers a smooth, visually rich shopping experience that enhances customer engagement and brand identity.",
-    "image": "/project4.png",
+    "image": "/shop.png",
     "link": "#",
     "category": "Brand App"
   },
