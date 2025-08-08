@@ -41,7 +41,7 @@ export function FAQ() {
   ]
 
   return (
-    <section className="py-20 bg-background px-4 transition-colors duration-300" id="faq">
+    <section className="py-20 bg-background px-4 transition-colors duration-300 rounded-3xl mx-4 md:mx-8 lg:mx-16" id="faq">
       <div className="max-w-4xl mx-auto">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -52,14 +52,14 @@ export function FAQ() {
           <span className="inline-block px-4 py-2 rounded-full bg-secondary text-muted-foreground text-sm font-medium mb-4 border border-border">
             FAQ
           </span>
-          <h2 className="text-2xl md:text-4xl font-bold text-foreground mb-6">
+          <h2 className="text-1xl md:text-3xl font-bold text-foreground mb-6">
             Here are answers to some of the questions
             <br />
             we get asked the most.
           </h2>
         </motion.div>
 
-        <div className="space-y-4 bg-card border border-border rounded-lg p-4 md:p-8">
+        <div className="space-y-4 bg-card border border-border rounded-2xl p-4 md:p-8">
           {faqData.map((item, index) => (
             <motion.div
               key={index}
@@ -70,7 +70,7 @@ export function FAQ() {
             >
               <button
                 onClick={() => setOpenIndex(openIndex === index ? null : index)}
-                className="w-full px-2 py-4 text-left flex items-center justify-between hover:bg-accent transition-colors rounded-md"
+                className="w-full px-2 py-4 text-left flex items-center justify-between hover:bg-accent transition-colors rounded-xl"
               >
                 <span className={`text-foreground font-medium ${openIndex === index ? "font-bold" : ""}`}>
                   {item.question}

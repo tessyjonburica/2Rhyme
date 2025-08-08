@@ -14,7 +14,7 @@ interface Project {
 
 export function ProjectCard({ project }: { project: Project }) {
   return (
-    <div className="bg-card border border-border rounded-lg overflow-hidden shadow-sm hover:shadow-md transition-all duration-300 hover:-translate-y-0.5">
+    <div className="bg-card border border-border rounded-2xl overflow-hidden shadow-sm hover:shadow-md transition-all duration-300 hover:-translate-y-0.5">
       {/* Project Image - Smaller aspect ratio */}
       <div className="relative overflow-hidden aspect-[4/3] bg-secondary">
         <Image

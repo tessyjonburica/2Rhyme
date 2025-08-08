@@ -120,7 +120,7 @@ export function Projects() {
         </motion.div>
 
         {/* Projects Grid - Responsive: 1 col mobile, 2 col tablet, 3 col desktop */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 lg:gap-5">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8">
           {/* Initial 3 Projects */}
           {initialProjects.map((project, index) => (
             <motion.div
